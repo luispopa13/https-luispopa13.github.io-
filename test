@@ -1,0 +1,87 @@
+import React, { useState } from "react";
+import axios from "axios";
+import "./styles/styles.css";
+
+const App = () => {
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setResults([]);
+
+    try {
+      const response = await axios.get(`/api/scrape-anime?title=${encodeURIComponent(query)}`);
+      setResults(response.data);
+    } catch (err) {
+      console.error("Error fetching anime data:", err.message);
+      setError(err.response?.data?.error || "Failed to fetch anime data.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="container">
+      <h1 className="text-center text-danger mt-4">Anime Search</h1>
+      <form onSubmit={handleSearch} className="d-flex mt-3">
+        <input
+          type="text"
+          className="form-control me-2"
+          placeholder="Search for anime..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          required
+        />
+        <button className="btn btn-outline-danger" type="submit">
+          Search
+        </button>
+      </form>
+
+      {loading && <p className="text-center text-muted mt-3">Loading...</p>}
+      {error && <p className="text-danger text-center">{error}</p>}
+
+      <div className="row g-4 justify-content-center mt-4">
+        {results.map((anime, index) => (
+          <div className="col-md-6 col-lg-4" key={index}>
+            <div className="card shadow h-100">
+              <img
+                src={anime.image || "/images/default.png"}
+                alt={anime.title || "No title"}
+                className="card-img-top"
+                style={{ height: "300px", objectFit: "contain" }}
+              />
+              <div className="card-body d-flex flex-column">
+                <h5 className="card-title">{anime.title || "No title"}</h5>
+                <p className="text-muted">
+                  {anime.description && anime.description.length > 100
+                    ? `${anime.description.substring(0, 100)}...`
+                    : anime.description || "No description"}
+                </p>
+                <p className="text-muted">Episodes: {anime.episodes || "Unknown"}</p>
+                <p className="text-muted">
+                  Start Date: {anime.startDate?.year || "?"}/{anime.startDate?.month || "?"}/{anime.startDate?.day || "?"}
+                </p>
+                <p className="text-muted">Score: {anime.score || "N/A"}</p>
+                <a
+                  href={anime.watchLink || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-danger mt-auto"
+                >
+                  Watch Here
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default App;
