@@ -1,0 +1,149 @@
+.anime-card {
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #f8f9fa; /* Light background */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+  }
+  
+  .anime-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Image Section */
+  .image-container {
+    width: 100%;
+    height: 350px; /* Fixed height for consistent layout */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .image-container img:hover {
+    transform: scale(1.1); /* Subtle zoom on hover */
+    opacity: 0.9; /* Slight dimming effect */
+  }
+  
+  /* Card Body Section */
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-body p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .card-body .btn {
+    border-radius: 20px;
+    font-weight: bold;
+    padding: 0.5rem 1.25rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .card-body .btn:hover {
+    background-color: #4a0808b6;
+    transform: translateY(-3px);
+  }
+
+  .card.anime-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .card.anime-card img:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+
+  }
+
+  .anime-image {
+    height: 300px; /* Adjust image height for smaller screens */
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-body p {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 0.4rem 1.2rem;
+  }
+
+  .da{
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 15vh;
+    color: rgb(122, 3, 19);
+  }
+
+  .da:hover{
+    color: rgba(245, 110, 26, 0.684);
+    transform: translateY(-50px);
+    transform: translateX(50px);
+  }
+
+  .nu{
+    color: yellow;
+  }
+
+  .nu:hover{
+    color: rgb(122, 3, 19);
+  }
+  .airplane{
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 13vh;
+    color: rgb(122, 3, 19);
+  }
+.airplane:hover{
+  color: rgb(207, 84, 32);
+  transform: translateY(-50px);
+  transform: translateX(50px);
+  }
+
+.bullet{
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  color: rgba(184, 187, 24, 0.792);
+}
+.bullet:hover{
+  color: rgba(153, 15, 15, 0.612);
+  transform: translateY(-50px);
+  transform: translateX(50px);
+}
+
+.title{
+  font-family: 'Akronim';
+  font-size: 40px;
+  opacity: 0.6;
+  color: rgba(177, 177, 47, 0.726);
+}
+.title:hover{
+  font-family: 'Doto';
+}
